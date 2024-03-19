@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import CssBaseline from '@mui/material/CssBaseline';
 import { createTheme, ThemeProvider as MUIThemeProvider } from '@mui/material/styles';
-
+import { SnackbarProvider, useSnackbar } from 'notistack'
 import { palette } from './palette';
 import { shadows } from './shadows';
 import { overrides } from './overrides';
@@ -31,7 +31,9 @@ export default function ThemeProvider({ children }) {
   return (
     <MUIThemeProvider theme={theme}>
       <CssBaseline />
+      <SnackbarProvider>
       {children}
+      </SnackbarProvider>
     </MUIThemeProvider>
   );
 }

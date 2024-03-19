@@ -1,17 +1,17 @@
 import { Helmet } from 'react-helmet-async';
 
-import { UserView } from 'src/sections/user/view';
+import { RegisterView } from 'src/sections/register';
 
 // ----------------------------------------------------------------------
 
-export default function UserPage() {
+export default function LoginPage() {
   return (
     <>
       <Helmet>
-        <title> User | Spark </title>
+        <title> Login | Spark </title>
       </Helmet>
 
-      <UserView />
+      <RegisterView />
     </>
   );
 }

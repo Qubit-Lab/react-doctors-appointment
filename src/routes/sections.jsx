@@ -13,6 +13,8 @@ export const Page404 = lazy(() => import('src/pages/page-not-found'));
 // ----------------------------------------------------------------------
 
 export default function Router() {
+  const isLoggedIn = !!localStorage.getItem('token');
+
   const routes = useRoutes([
     {
       element: (
@@ -23,10 +25,10 @@ export default function Router() {
         </DashboardLayout>
       ),
       children: [
-        { element: <IndexPage />, index: true },
-        { path: 'user', element: <UserPage /> },
-        { path: 'products', element: <ProductsPage /> },
-        { path: 'blog', element: <BlogPage /> },
+        { element: isLoggedIn? <IndexPage /> : <Navigate to="/login" replace /> , index: true },
+        { path: 'user', element: isLoggedIn ? <UserPage /> : <Navigate to="/login" replace /> },
+        { path: 'products', element: isLoggedIn ? <ProductsPage /> : <Navigate to="/login" replace /> },
+        { path: 'blog', element: isLoggedIn ? <BlogPage /> : <Navigate to="/login" replace /> },
       ],
     },
     {
